@@ -25,42 +25,97 @@
       // create an array with nodes
       var nodes = new vis.DataSet([
         { id: 1, label: "Start" },
-        { id: 2, label: "HTML" },
-        { id: 3, label: "JS" },
-        { id: 4, label: "CSS" },
-        { id: 5, label: "React.js" },
-        { id: 6, label: "Next.js" },
+        {
+          id: 2,
+          label: "HTML",
+          shape: "image",
+          image:
+            "https://syncer.jp/storage/web/brand-logos/static/dst/html5-logo-002_small.png",
+        },
+        {
+          id: 3,
+          label: "JS",
+          shape: "image",
+          image: "https://cdn.svgporn.com/logos/javascript.svg",
+        },
+        {
+          id: 4,
+          label: "CSS",
+          shape: "image",
+          image: "https://cdn.svgporn.com/logos/css-3.svg",
+        },
+        {
+          id: 5,
+          label: "React.js",
+          shape: "image",
+          image: "https://cdn.svgporn.com/logos/react.svg",
+        },
+        {
+          id: 7,
+          label: "Node.js",
+          shape: "image",
+          image: "https://cdn.svgporn.com/logos/nodejs-icon.svg",
+        },
+        {
+          id: 8,
+          label: "Next.js",
+          shape: "image",
+          image: "https://cdn.svgporn.com/logos/nextjs.svg",
+        },
+        {
+          id: 9,
+          label: "Vue.js",
+          shape: "image",
+          image: "https://cdn.svgporn.com/logos/vue.svg",
+        },
+        {
+          id: 10,
+          label: "Vuetify",
+          shape: "image",
+          image: "https://cdn.svgporn.com/logos/vuetifyjs.svg",
+        },
+        {
+          id: 11,
+          label: "Nuxt",
+          shape: "image",
+          image: "https://cdn.svgporn.com/logos/nuxt-icon.svg",
+        },
       ]);
+
+      var Edge = (from, to, comp = false) => {
+        return comp
+          ? {
+              from: from,
+              to: to,
+              dashes: true,
+            }
+          : {
+              from: from,
+              to: to,
+              dashes: false,
+              background: {
+                enabled: false,
+              },
+            };
+      };
 
       // create an array with edges
       var edges = new vis.DataSet([
-        { from: 1, to: 2, dashes: true },
-        { from: 2, to: 3, dashes: true },
-        { from: 2, to: 4, dashes: true },
-        {
-          from: 3,
-          to: 5,
-          dashes: false,
-          background: {
-            enabled: false,
-          },
-        },
-        {
-          from: 4,
-          to: 5,
-          dashes: false,
-          background: {
-            enabled: false,
-          },
-        },
-        {
-          from: 5,
-          to: 6,
-          dashes: false,
-          background: {
-            enabled: false,
-          },
-        },
+        Edge(1, 2, true),
+        Edge(2, 3, true),
+        Edge(2, 4, true),
+        Edge(3, 5, false),
+        Edge(3, 7, false),
+        Edge(3, 9, false),
+        Edge(4, 5, false),
+        Edge(4, 9, false),
+        Edge(5, 6, false),
+        Edge(5, 8, false),
+        Edge(7, 8, false),
+        Edge(7, 11, false),
+        Edge(9, 11, false),
+        Edge(9, 10, false),
+        Edge(10, 11, false),
       ]);
 
       // create a network
