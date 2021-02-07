@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title>Vis Network | Edge Styles | Edge background</title>
+
+    <script
+      type="text/javascript"
+      src="https://visjs.github.io/vis-network/standalone/umd/vis-network.min.js"
+    ></script>
+
+    <style type="text/css">
+      #mynetwork {
+        width: 600px;
+        height: 400px;
+        border: 1px solid lightgray;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Edge background.</p>
+
+    <div id="mynetwork"></div>
+
+    <script type="text/javascript">
+      // create an array with nodes
+      var nodes = new vis.DataSet([
+        { id: 1, label: "Start" },
+        { id: 2, label: "HTML" },
+        { id: 3, label: "JS" },
+        { id: 4, label: "CSS" },
+        { id: 5, label: "React.js" },
+        { id: 6, label: "Next.js" },
+      ]);
+
+      // create an array with edges
+      var edges = new vis.DataSet([
+        { from: 1, to: 2, dashes: true },
+        { from: 2, to: 3, dashes: true },
+        { from: 2, to: 4, dashes: true },
+        {
+          from: 3,
+          to: 5,
+          dashes: false,
+          background: {
+            enabled: false,
+          },
+        },
+        {
+          from: 4,
+          to: 5,
+          dashes: false,
+          background: {
+            enabled: false,
+          },
+        },
+        {
+          from: 5,
+          to: 6,
+          dashes: false,
+          background: {
+            enabled: false,
+          },
+        },
+      ]);
+
+      // create a network
+      var container = document.getElementById("mynetwork");
+      var data = {
+        nodes: nodes,
+        edges: edges,
+      };
+      var options = {
+        edges: {
+          shadow: true,
+          smooth: true,
+          background: {
+            enabled: true,
+            color: "#ff0000",
+          },
+        },
+      };
+
+      var network = new vis.Network(container, data, options);
+    </script>
+  </body>
+</html>
